@@ -7,7 +7,7 @@
 ## Market Data endpoints
 ### order book
 ```
-GET /api/ex/public/orderbook
+GET https://www.bitroom.io/api/ex/public/orderbook
 ```
 
 **Parameters:**
@@ -37,7 +37,7 @@ limit | INT | NO | Default 10 Valid limits:[10, 100]
 
 ### 24hr ticker price change statistics
 ```
-GET /api/ex/public/ticker/24hr
+GET https://www.bitroom.io/api/ex/public/ticker/24hr
 ```
 24 hour rolling window price change statistics. **Careful** when accessing this with no `pair`.
 
