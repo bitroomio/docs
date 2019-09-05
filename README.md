@@ -17,8 +17,8 @@ NONE
 **Response:**
 ```javascript
 {
-    "timezone": "UTC",
-    "serverTime": 1567678837074,
+    "timezone": "HKT",
+    "serverTime": 1567687793952369,
     "pairs":
     [
         {
