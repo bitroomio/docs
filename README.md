@@ -5,6 +5,68 @@
 * `amount=price*volume`, `amount` measured by `quote currency`.
 
 ## Market Data endpoints
+### Exchange information
+```
+GET https://www.bitroom.io/api/ex/public/exchangeInfo
+```
+Current exchange trading rules and symbol information
+
+**Parameters:**
+NONE
+
+**Response:**
+```javascript
+{
+    "timezone": "UTC",
+    "serverTime": 1567678837074,
+    "pairs":
+    [
+        {
+            "name": "ETH/USDT",
+            "base_currency": "ETH",
+            "quote_currency": "USDT",
+            "status": true, // true: trading false: suspend
+            "maker_fee": "0.001",
+            "taker_fee": "0.001",
+            "min_price": "0.01",
+            "max_price": "10000000000",
+            "min_volume": "0.0001",
+            "max_volume": "10000000000",
+            "issue_price": "227.3",
+            "issue_time": 1565152390
+        }
+    ]
+}
+```
+
+### Recent trades list
+```
+GET https://www.bitroom.io/api/ex/public/trades
+```
+Get recent trades (up to last 500).
+
+**Parameters:**
+
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+pair | STRING | YES |
+limit | INT | NO | Default 100; max 500.
+
+**Response:**
+```javascript
+Example: /api/ex/public/trades?pair=BMT/USDT&limit=100
+
+[
+  {
+      "id": 1169584632568483840,
+      "created_at": 1567685680893075,
+      "price": "0.092",
+      "volume": "2",
+      "initiative": 1 // 1: initiative buy, 2: initiative sell
+  }
+]
+```
+
 ### order book
 ```
 GET https://www.bitroom.io/api/ex/public/orderbook
@@ -19,6 +81,8 @@ limit | INT | NO | Default 10 Valid limits:[10, 100]
 
 **Response:**
 ```javascript
+Example: /api/ex/public/orderbook?pair=BMT/USDT
+
 {
   "bids": [
     [
